@@ -39,6 +39,7 @@ The follwing things have been practiced here:
 👤 **Muhammad Talha Waqar**
 
 - Github: [@talhawaqar](https://github.com/talhawaqar)
+- E-mail:<a href="mailto:talhawaqar007@gmail.com?subject=Hello Talha!">Email</a>
 
 
 ## Show your support
