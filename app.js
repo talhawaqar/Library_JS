@@ -6,6 +6,8 @@ const pages = document.getElementById('page');
 const read = document.getElementById('read');
 const displayFromBtn = document.getElementById('new-bookbtn');
 const form = document.getElementById('create-form');
+const error = document.getElementById('error');
+
 
 const myLibrary = [];
 
@@ -16,9 +18,39 @@ function Book(title, author, pages, isread) {
   this.isread = isread;
 }
 
-function addBookToLibrary(book) {
+
+const addBookToLibrary = (book) => {
   myLibrary.push(book);
-}
+};
+
+const deleteBookFromLibrary = (title, author) => {
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    if (myLibrary[i].title === title && myLibrary[i].author === author) {
+      myLibrary.splice(i, 1);
+      break;
+    }
+  }
+};
+
+const deleteFn = (deleteBtn) => {
+  deleteBtn.addEventListener('click', (e) => {
+    const el = e.target.parentElement;
+    const title = el.querySelector('h3').textContent;
+    const author = el.querySelector('h5').textContent;
+    el.parentNode.removeChild(el);
+
+    deleteBookFromLibrary(title, author);
+  });
+};
+
+const readFn = (readBtn, book) => {
+  readBtn.addEventListener('click', () => {
+    book.isread = !book.isread;
+    readBtn.textContent = book.isread ? 'Read' : 'NotRead';
+    readBtn.classList.toggle('readbtn');
+    readBtn.classList.toggle('notreadbtn');
+  });
+};
 
 const book1 = new Book('Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 464, true);
 const book2 = new Book('How to Stop Worrying and Start Living', 'Dale Carnegie', 306, true);
@@ -30,7 +62,7 @@ addBookToLibrary(book2);
 addBookToLibrary(book3);
 addBookToLibrary(book4);
 
-function createIsReadBtn(book) {
+const createIsReadBtn = (book) => {
   const readBtn = document.createElement('button');
   // Check for read or not
   if (book.isread) {
@@ -40,17 +72,13 @@ function createIsReadBtn(book) {
     readBtn.textContent = 'NotRead';
     readBtn.classList.toggle('notreadbtn');
   }
-  // toggle btn for isRead
-  readBtn.addEventListener('click', () => {
-    book.isread = !book.isread;
-    readBtn.textContent = book.isread ? 'Read' : 'NotRead';
-    readBtn.classList.toggle('readbtn');
-    readBtn.classList.toggle('notreadbtn');
-  });
-  return readBtn;
-}
 
-function displayLibrary(array) {
+  readFn(readBtn, book);
+  return readBtn;
+};
+
+
+const displayLibrary = (array) => {
   container.innerHTML = '';
 
   for (let i = 0; i < array.length; i += 1) {
@@ -61,24 +89,19 @@ function displayLibrary(array) {
     div.classList.add('bookdiv'); // Add the style for div
 
     const title = document.createElement('h3');
-    const author = document.createElement('p');
+    const author = document.createElement('h5');
     const pages = document.createElement('p');
 
     // Data insertion
     title.textContent = book.title;
-    author.textContent = `Author: ${book.author}`;
+    author.textContent = book.author;
     pages.textContent = `No.of pages: ${book.pages}`;
 
     // delete a book Btn
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('deletebtn');
-
-    deleteBtn.textContent = 'Delete';
-
-    deleteBtn.addEventListener('click', () => {
-      myLibrary.splice(i, 1);
-      displayLibrary(myLibrary);
-    });
+    const deleteBtnEl = document.createElement('button');
+    deleteBtnEl.classList.add('deletebtn');
+    deleteBtnEl.textContent = 'Delete';
+    deleteFn(deleteBtnEl);
 
     // Organogram
     container.appendChild(div);
@@ -86,9 +109,9 @@ function displayLibrary(array) {
     div.appendChild(author);
     div.appendChild(pages);
     div.appendChild(createIsReadBtn(book));
-    div.appendChild(deleteBtn);
+    div.appendChild(deleteBtnEl);
   }
-}
+};
 
 displayLibrary(myLibrary);
 
@@ -102,6 +125,7 @@ submitBtn.addEventListener('click', (e) => {
   e.preventDefault(); // This will prevent the default behaviour of the event.
 
   if (title.value === '' || author.value === '' || pages.value === '') {
+    error.classList.add('error-display');
     return;
   }
 
@@ -112,4 +136,5 @@ submitBtn.addEventListener('click', (e) => {
   author.value = '';
   pages.value = '';
   read.checked = false;
+  error.classList.remove('error-display');
 });

@@ -24,7 +24,8 @@ body {
 
 .title {
   color: #fff;
-  margin: auto;
+  margin: 0 auto;
+  text-align: center;
   padding: 1rem;
   border-radius: 15px 0;
 }
@@ -100,6 +101,7 @@ body {
 }
 
 form {
+  display: none;
   width: 81%;
   margin: 0 auto;
   border: 1px solid rgb(219, 74, 30);
@@ -123,11 +125,22 @@ form input:last-child {
   width: auto;
 }
 
-.form {
-  display: none;
+.display {
+  display: block;
 }
 
-.display {
+.error {
+  display: none;
+  width: 50%;
+  background-color: rgb(143, 25, 25);
+  color: #fff;
+  margin: 0 auto;
+  border: 1px solid rgb(143, 25, 25);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.error-display {
   display: block;
 }
 
