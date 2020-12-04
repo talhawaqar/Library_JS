@@ -75,7 +75,7 @@ function displayLibrary(array) {
 
     deleteBtn.textContent = 'Delete';
 
-    deleteBtn.addEventListener('click', () => {     
+    deleteBtn.addEventListener('click', () => {
       myLibrary.splice(i, 1);
       displayLibrary(myLibrary);
     });
@@ -101,7 +101,7 @@ displayFromBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault(); // This will prevent the default behaviour of the event.
 
-  if (title.value === '' || author.value === '' || pages.value === '') {    
+  if (title.value === '' || author.value === '' || pages.value === '') {
     return;
   }
 
