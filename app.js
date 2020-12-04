@@ -75,8 +75,7 @@ function displayLibrary(array) {
 
     deleteBtn.textContent = 'Delete';
 
-    deleteBtn.addEventListener('click', () => {
-      alert('Are you sure? You want to delete this book?');
+    deleteBtn.addEventListener('click', () => {     
       myLibrary.splice(i, 1);
       displayLibrary(myLibrary);
     });
@@ -102,8 +101,7 @@ displayFromBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault(); // This will prevent the default behaviour of the event.
 
-  if (title.value === '' || author.value === '' || pages.value === '') {
-    alert('Cannot create book because some properties are missing');
+  if (title.value === '' || author.value === '' || pages.value === '') {    
     return;
   }
 
