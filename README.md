@@ -1,6 +1,6 @@
 # PROJECT: LIBRARY
 
-This project is a simple library where an user can add or remove books that have title, author and read status. 
+This project is a simple library where an user can add or remove books that have title, author, number of pages and read status. 
 The follwing things have been practiced here:
 - DOM Manipulation with JavaScript
 - Use of JavaScript functions and loops
