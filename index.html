@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/867f1dd431.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>MyLibrary</title>
+</head>
+<body>
+  <div id="wrapper">
+    
+    <header>
+        <div id="page-banner">
+            <h1 class="title">Book Library</h1>           
+        </div>
+    </header>
+
+    <!-- Contains the main body -->
+    <div class="container">
+    </div>
+    
+    <!-- Add a new book -->
+    <div>        
+        <div class= 'newbook'>
+            <button class="btn addbtn" id='new-bookbtn'>New Book</button>
+        </div> 
+        <form class="form" id='create-form'>
+          <p>Add a new book:</p>
+          <p class = 'error' id='error'>Please enter all required properties for creating a book</p>
+          <label for="title">Book title</label>
+          <input type="text" id="title"><br/>
+          <label for="author">Book author</label>
+          <input type="text" id="author"><br/>  
+          <label for="page">Number of Pages</label>
+          <input type="number" id="page" min="1"><br/>       
+          <label for="read">Have you read this book?</label>
+          <input type="checkbox" id="read"><br/>
+          <button type="submit" class="submit addbtn">Create</button>
+        </form>
+      </div>
+
+      <footer  class="displaynone">
+        <div class="flexfooter">
+          <p>
+            <small>Copyright &copy; All rights reserved - by Lamia$Talha</small>
+          </p>
+          <ul class="">
+             <li>
+               <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram "></i>
+                 <i class="fab fa-tumblr "></i>
+                 <i class="fab fa-linkedin-in "></i>
+             </li>
+          </ul> 
+        </div>                
+      </footer>
+
+  </div> 
+ 
+
+</body>
+<script defer src="app.js"></script>
+</html>
